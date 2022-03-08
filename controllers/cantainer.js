@@ -10,7 +10,7 @@ module.exports = class Cantainer {
   }
   static async post(req,res){
     let cantainer = JSON.parse(fs.readFileSync(path.join(process.cwd(),"data","cantainer.json")))
-    req.body.id = cantainer.length ? cantainer.length : 1
+    req.body.id = cantainer.length ? cantainer.length+1 : 1
     cantainer.push(req.body)
     fs.writeFileSync(path.join(process.cwd(),"data","cantainer.json"),JSON.stringify(cantainer,null,4))
     res.json({
