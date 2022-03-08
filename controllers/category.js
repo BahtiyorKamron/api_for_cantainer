@@ -9,7 +9,7 @@ module.exports = class Category {
   }
   static async post(req,res){
     let categories = JSON.parse(fs.readFileSync(path.join(process.cwd(),'data','category.json')))
-    req.body.id = categories.length ? categories.length : 1
+    req.body.id = categories.length ? categories.length+1 : 1
     categories.push(req.body)
     fs.writeFileSync(path.join(process.cwd(),"data","category.json"),JSON.stringify(categories,null,4))
     res.json({
