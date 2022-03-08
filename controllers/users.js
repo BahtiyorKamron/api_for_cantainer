@@ -20,13 +20,17 @@ module.exports = class Users {
   static async delete(req,res){
     let users = JSON.parse(fs.readFileSync(path.join(process.cwd(),"data","users.json")))
     let u = null
-    users = users.filter(el => {
+    if(!req.body.clean){
+      users = users.filter(el => {
       if(el.id==req.body.id){
         u = el
       }else{
         return el
       }
     })
+    }else{
+      users = []
+    }
     fs.writeFileSync(path.join(process.cwd(),"data","users.json"),JSON.stringify(users,null,4))
     res.json({
       data : u,
