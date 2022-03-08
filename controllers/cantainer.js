@@ -28,6 +28,7 @@ module.exports = class Cantainer {
         return el
       }
     })
+    if(req.body.clean) cantainer=[]
     fs.writeFileSync(path.join(process.cwd(),"data","cantainer.json"),JSON.stringify(cantainer,null,4))
     
     res.json({
