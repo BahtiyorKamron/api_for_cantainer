@@ -43,6 +43,7 @@ module.exports = class Users {
     users = users.map(el => {
       if(el.id==req.body.id){
         el.name = req.body.name || el.name
+        el.password = req.body.password || el.password
         u = el
       
       }
