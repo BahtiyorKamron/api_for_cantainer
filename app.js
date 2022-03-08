@@ -11,4 +11,5 @@ app.use( Category )
 app.use( Cantainer )
 
 
-app.listen(port,()=>{})
+app.listen(process.env.PORT,()=>console.log(`http://localhost:${process.env.PORT}`))
+
